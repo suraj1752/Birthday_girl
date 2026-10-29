@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff8ed">
+<title>For Khushi 🌹</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Pacifico&display=swap');
+:root{--coral:#e96f78;--coral2:#f18c8b;--ink:#6e5b51;--cream:#fff8ec;--mint:#d9eee5;--pink:#fbe1e4}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;background:radial-gradient(ellipse at 50% 35%,#fffdf4 0,#fff8ed 55%,#f9e9df 100%);overflow-x:hidden}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:3px solid #cc596a;outline-offset:4px}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:4;overflow:hidden}
+header{position:absolute;top:22px;left:28px;right:28px;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:#a99182;z-index:2}
+.logo{font:1.1rem 'Pacifico',cursive;color:#c66b70}
+.back{border:0;background:#ffffffa8;color:#927f74;border-radius:999px;padding:8px 13px;display:none}
+.screen{min-height:100svh;display:none;align-items:center;justify-content:center;text-align:center;padding:90px 22px 45px;position:relative;animation:enter .55s both}
+.screen.active{display:flex}
+.inner{width:min(900px,100%);margin:auto;position:relative}
+.kicker{text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:#b08d7f}
+h1,h2{font-family:'Playfair Display',serif;font-weight:500;color:#a85b62}
+h1{font-size:clamp(2.6rem,7vw,5.3rem);line-height:1.12;margin:18px 0}
+h2{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.15;margin:16px 0}
+p{line-height:1.8;color:#907b70}
+.btn{border:0;border-radius:999px;background:var(--coral);color:white;padding:14px 25px;box-shadow:0 9px 24px #d66b6b30;transition:transform .2s,background .2s;min-width:115px}
+.btn:hover{transform:translateY(-2px);background:#dd626d}
+.btn.secondary{background:#fff;color:#a47776;border:1px solid #f1d6d0;box-shadow:none}
+.choices{display:flex;gap:16px;justify-content:center;align-items:center;margin-top:28px;min-height:58px;flex-wrap:wrap}
+.no-btn{position:relative;transition:transform .16s}
+.small{font-size:.8rem;color:#b19a8c;margin-top:17px}
+.bouquet-title{font:italic clamp(1.6rem,4vw,2.2rem) 'Playfair Display',serif;color:#96736c;margin:0 0 8px}
+.bouquet-stage{height:340px;display:grid;place-items:center;position:relative;margin:0 auto;max-width:620px}
+.bouquet-svg{width:min(330px,70vw);height:auto;filter:drop-shadow(0 15px 10px #6b49351c);animation:float 4s ease-in-out infinite}
+.bubble{position:absolute;max-width:145px;padding:12px 14px;background:#f1fffae8;border:1px solid #e4f1e9;border-radius:17px;box-shadow:0 7px 20px #8b9b8c12;font-size:.78rem;line-height:1.4;color:#7b8c7c}
+.bubble b{color:#63866e}.b1{left:3%;top:16%}.b2{right:2%;top:11%}.b3{left:1%;bottom:15%}.b4{right:1%;bottom:12%}
+.continue{margin-top:4px}
+.progress{font-size:.72rem;letter-spacing:.1em;color:#b99a8b;margin-bottom:10px}
+.cake{font-size:6rem;display:block;animation:bob 2.4s infinite;cursor:pointer}
+.card{max-width:670px;margin:22px auto 0;padding:30px;border:1px solid #f0ddd0;border-radius:25px;background:#fffdf7b8;box-shadow:0 15px 50px #8f65500b}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:720px;margin:28px auto}
+.photo-card{padding:10px 10px 16px;background:white;border:1px solid #f1dfd6;border-radius:12px;box-shadow:0 10px 24px #805b4b10;transform:rotate(var(--r));transition:.2s}
+.photo-card:hover{transform:translateY(-5px) rotate(0)}
+.photo-placeholder{aspect-ratio:3/4;background:linear-gradient(140deg,#f8dfe0,#fff0d9 55%,#dceee3);border-radius:8px;display:grid;place-items:center;font-size:2.8rem;overflow:hidden}
+.photo-placeholder img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-card strong{display:block;font:1rem 'Playfair Display',serif;color:#a85b62;margin-top:12px}
+.photo-card small{display:block;color:#b59b8d;font-size:.68rem;margin-top:4px}
+.upload-note{font-size:.8rem;color:#a38c80}
+.envelope{font-size:5rem;display:block;border:0;background:none;margin:18px auto;transition:transform .3s}
+.envelope:hover{transform:rotate(-7deg) scale(1.05)}
+.letter{max-width:620px;margin:20px auto;background:#fffdf6;border:1px solid #ead9b8;padding:28px;border-radius:5px;text-align:left;display:none;animation:enter .4s}
+.letter.open{display:block}
+.letter p{font:1.05rem/1.9 'Playfair Display',serif}
+.final-heart{font-size:4rem;animation:bob 2s infinite}
+footer{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bba397;font-size:.7rem;pointer-events:none}
+.toast{position:fixed;bottom:35px;left:50%;transform:translate(-50%,20px);opacity:0;background:#826a60;color:white;padding:12px 18px;border-radius:999px;z-index:8;transition:.3s;max-width:90vw;font-size:.82rem;pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-9px) rotate(1deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:650px){header{left:16px;right:16px;top:15px}.screen{padding:75px 18px 50px}.bouquet-stage{height:340px}.bubble{max-width:118px;font-size:.68rem;padding:9px}.b1{left:0;top:8%}.b2{right:0;top:5%}.b3{left:0;bottom:7%}.b4{right:0;bottom:4%}.photo-grid{grid-template-columns:1fr;max-width:260px}.photo-card{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.balloon-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;max-width:760px;margin:28px auto 18px}
+.balloon-slot{min-height:205px;display:flex;align-items:center;justify-content:center}
+.balloon{border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:8px;color:#b38a83;transition:transform .2s;min-width:0}
+.balloon:hover{transform:translateY(-7px) rotate(4deg)}
+.balloon span{font-size:clamp(3.5rem,8vw,5.7rem);filter:drop-shadow(0 8px 7px #a95b5b24);animation:float 2.8s ease-in-out infinite}
+.balloon small{font-size:.72rem;letter-spacing:.04em}
+.wish-reveal{width:100%;min-height:170px;display:flex;align-items:center;justify-content:center;padding:18px 13px;border:1px solid #f0d7d3;border-radius:20px;background:#fffdf8;box-shadow:0 10px 25px #94685a0c;color:#98646a;font:1rem/1.65 'Playfair Display',serif;animation:enter .35s both}
+.balloon-complete{min-height:28px;margin:5px auto 15px;color:#b08c80;font-size:.85rem}
+.photo-wide{max-width:420px;margin:0 auto 22px}
+.photo-wide .photo-placeholder{aspect-ratio:16/9}
+@media(max-width:650px){.balloon-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.balloon-slot{min-height:175px}.wish-reveal{min-height:150px;font-size:.9rem}.photo-wide{max-width:100%}}
+
+</style>
+</head>
+<body>
+<div id="hearts"></div>
+<header><div class="logo">a little surprise for Khushi ♡</div><button class="back" id="backBtn">← Back</button></header>
+<main>
+<section class="screen active" id="s0"><div class="inner">
+ <div style="font-size:3.3rem">🎀</div><div class="kicker">a very important question</div>
+ <h1>Khushi, are you<br>excited for your birthday?</h1>
+ <p>Because someone has a little surprise waiting just for you… 💗</p>
+ <div class="choices"><button class="btn" id="yesBtn">Yes! 💕</button><button class="btn secondary no-btn" id="noBtn">No 🙄</button></div>
+ <div class="small">Choose wisely, birthday girl 😌</div>
+</div></section>
+
+
+<section class="screen" id="s1"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 01 / 06</div>
+ <div class="kicker">four little wishes, just for you</div>
+ <h2>Pop the balloons, Khushi! 🎈</h2>
+ <p>Tap each balloon to reveal a little wish from me. 💗</p>
+ <div class="balloon-grid">
+  <div class="balloon-slot"><button class="balloon" aria-label="Pop balloon 1" data-wish="I hope your days are full of reasons to smile — and I hope I get to be one of them. 💗"><span>🎈</span><small>pop me!</small></button></div>
+  <div class="balloon-slot"><button class="balloon" aria-label="Pop balloon 2" data-wish="May all the lovely things you quietly wish for find their way to you. ✨"><span>🎈</span><small>pop me!</small></button></div>
+  <div class="balloon-slot"><button class="balloon" aria-label="Pop balloon 3" data-wish="Never forget how special you are to me, Khushi. You make my world softer and brighter. 🌷"><span>🎈</span><small>pop me!</small></button></div>
+  <div class="balloon-slot"><button class="balloon" aria-label="Pop balloon 4" data-wish="My favorite wish is simple: more memories, more laughter, and more birthdays by your side. 🫶"><span>🎈</span><small>pop me!</small></button></div>
+ </div>
+ <div id="balloonComplete" class="balloon-complete" aria-live="polite">Pop all four to unlock the next surprise 💕</div>
+ <button class="btn" id="balloonContinue" style="display:none" onclick="go(2)">All my wishes for you →</button>
+</div></section>
+
+<section class="screen" id="s2"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 02 / 06</div><h2 class="bouquet-title">Your Rose Bouquet 🌹</h2>
+ <div class="bouquet-stage">
+  <div class="bubble b1">Forever yours 💗</div><div class="bubble b2">You make my world beautiful ✨</div>
+  <div class="bubble b3">I'm lucky to have you 🌷</div><div class="bubble b4">You are my favorite person 💕</div>
+  <svg class="bouquet-svg" viewBox="0 0 330 340" role="img" aria-label="A bouquet of red roses wrapped in cream paper with a coral bow">
+   <defs><linearGradient id="paper" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#fff9df"/><stop offset="1" stop-color="#dfd3a8"/></linearGradient><linearGradient id="rose" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f06b4c"/><stop offset="1" stop-color="#9f3027"/></linearGradient></defs>
+   <g stroke="#66865c" stroke-width="3" fill="none"><path d="M160 210L92 105M166 211L126 75M168 210L168 64M171 210L211 77M174 210L243 106M158 210L68 140M179 210L263 142M164 210L111 127M176 210L220 128"/></g>
+   <g fill="#7e9a69"><path d="M109 112Q77 83 83 67Q112 75 109 112"/><path d="M135 91Q111 56 126 42Q149 63 135 91"/><path d="M191 89Q198 51 218 48Q218 76 191 89"/><path d="M222 111Q244 78 265 90Q252 112 222 111"/><path d="M103 150Q65 130 57 151Q82 170 103 150"/><path d="M220 153Q253 124 275 144Q254 164 220 153"/><path d="M160 100Q143 64 159 48Q177 71 160 100"/></g>
+   <path d="M55 128Q163 180 275 126L221 254L166 294L107 253Z" fill="url(#paper)" stroke="#d5c69b" stroke-width="2"/><path d="M54 128L166 294L107 253Z" fill="#fff5d8"/><path d="M275 126L166 294L221 254Z" fill="#e9ddb7"/>
+   <g fill="url(#rose)" stroke="#a43b2b" stroke-width="1.5">
+    <g transform="translate(105 111)"><circle r="26"/><path d="M-16 -3Q-7 -22 8 -13Q21 -4 7 5Q-5 13 -11 2Q-13 -6 -2 -8Q7 -8 4 0" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(143 89)"><circle r="28"/><path d="M-16 -4Q-6 -24 10 -13Q24 -2 7 7Q-5 14 -11 2Q-12 -7 0 -9Q8 -8 4 1" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(180 92)"><circle r="27"/><path d="M-16 -4Q-5 -23 10 -12Q22 -2 7 7Q-5 13 -11 2Q-12 -7 0 -9Q8 -8 4 1" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(218 112)"><circle r="25"/><path d="M-15 -3Q-6 -21 9 -12Q21 -2 7 6Q-5 13 -10 2Q-12 -6 0 -8Q7 -8 4 0" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(82 145)"><circle r="23"/><path d="M-14 -3Q-5 -19 8 -10Q18 -1 6 6Q-5 11 -9 2Q-10 -5 0 -7" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(121 145)"><circle r="26"/><path d="M-15 -3Q-5 -21 9 -12Q22 -2 7 6Q-5 13 -10 2Q-12 -6 0 -8" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(162 132)"><circle r="27"/><path d="M-16 -4Q-6 -22 10 -12Q22 -2 7 7Q-5 13 -11 2Q-12 -7 0 -9Q8 -8 4 1" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(201 145)"><circle r="25"/><path d="M-15 -3Q-5 -21 9 -12Q22 -2 7 6Q-5 13 -10 2Q-12 -6 0 -8" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+    <g transform="translate(240 145)"><circle r="21"/><path d="M-13 -3Q-5 -18 8 -10Q18 -1 6 6Q-5 11 -9 2" fill="none" stroke="#ffb08a" stroke-width="4"/></g>
+   </g>
+   <path d="M144 230Q164 215 180 230Q197 248 167 260Q136 248 144 230Z" fill="#ed795f"/><path d="M158 243L112 276Q105 281 113 290L164 258Z" fill="#d95b4d"/><path d="M172 244L217 270Q226 277 217 285L166 258Z" fill="#f18468"/><path d="M151 231Q161 216 175 229L174 250L157 252Z" fill="#f18b6d" stroke="#c95345" stroke-width="2"/><path d="M159 250L153 309L168 293L178 310L173 249Z" fill="#d95b4d"/>
+  </svg>
+ </div>
+ <button class="btn continue" onclick="go(3)">Continue →</button>
+</div></section>
+
+<section class="screen" id="s3"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 03 / 06</div><div class="kicker">a birthday wish just for you</div><h2>Make a wish, Khushi ✨</h2>
+ <p>Close your eyes, wish for something beautiful, then tap the cake to blow out your candle.</p>
+ <div class="card"><button id="cakeBtn" style="border:0;background:none;color:inherit"><span class="cake" id="cake">🎂</span></button><p id="cakeText">Tap the cake when you're ready!</p></div>
+ <button class="btn" onclick="go(4)">Next surprise →</button>
+</div></section>
+
+<section class="screen" id="s4"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 04 / 06</div><div class="kicker">little moments, big feelings</div><h2>My favorite girl, in pictures 📸</h2>
+ <p>A few little pieces of our story, Khushi. Every picture holds a memory I want to keep close. 💗</p>
+ <div class="photo-grid">
+  <div class="photo-card" style="--r:-2deg"><div class="photo-placeholder"><img src="photos/khushi-portrait.jpg" alt="Khushi in a beautiful embroidered outfit" loading="lazy"></div><strong>Your pretty smile</strong><small>my favorite view</small></div>
+  <div class="photo-card" style="--r:1.5deg"><div class="photo-placeholder"><img src="photos/us-festival.png" alt="A favorite picture of us together" loading="lazy"></div><strong>Our silly moments</strong><small>my favorite memories</small></div>
+  <div class="photo-card" style="--r:-1deg"><div class="photo-placeholder"><img src="photos/khushi-selfie.jpg" alt="Khushi smiling in red" loading="lazy"></div><strong>Your beautiful eyes</strong><small>our story keeps growing</small></div>
+  <div class="photo-card" style="--r:2deg"><div class="photo-placeholder"><img src="photos/our-cozy-moment.png" alt="A cozy romantic moment together" loading="lazy"></div><strong>Just us, in our own little world</strong><small>better together ♡</small></div>
+  <div class="photo-card" style="--r:-1.5deg"><div class="photo-placeholder"><img src="photos/us-evening.jpg" alt="Us looking at each other during an evening out" loading="lazy"></div><strong>The way you look at me</strong><small>one look, a thousand feelings</small></div>
+  <div class="photo-card" style="--r:1deg"><div class="photo-placeholder"><img src="photos/holding-hands.jpg" alt="Our hands together across a table" loading="lazy"></div><strong>Always hold my hand</strong><small>my favorite kind of comfort</small></div>
+ </div>
+ <div class="photo-card photo-wide" style="--r:1deg"><div class="photo-placeholder"><img src="photos/us-night.png" alt="A warm evening photo of us together" loading="lazy"></div><strong>One of my favorite us moments</strong><small>you + me = my happy place</small></div>
+ <button class="btn" onclick="go(5)">There's a letter for you →</button>
+</div></section>
+
+<section class="screen" id="s5"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 05 / 06</div><div class="kicker">from my heart to yours</div><h2>A letter for Khushi 💌</h2>
+ <p>Tap the envelope to open your little birthday letter.</p>
+ <button class="envelope" id="env" aria-label="Open birthday letter">💌</button>
+ <article class="letter" id="letter"><p><strong>Dear Khushi,</strong></p>
+ <p>Happy birthday to the girl who makes ordinary moments feel special. I hope this new year brings you the kind of happiness that stays, the kind of love that feels safe, and a thousand reasons to smile.</p>
+ <p>You matter to me in more ways than I can fit into one little page. I hope you always feel appreciated, supported, and loved — not only today, but on all the regular days too.</p>
+ <p>Keep being your wonderful, funny, beautiful self. May your wishes find their way to you, may your heart feel light, and may life give you so many reasons to be happy.</p>
+ <p style="text-align:right;color:#c45d72;font-style:italic">Happy birthday, meri Khushi. ♡</p></article>
+ <button class="btn" onclick="go(6)">One last surprise →</button>
+</div></section>
+
+<section class="screen" id="s6"><div class="inner">
+ <div class="progress">YOUR SURPRISE · 06 / 06</div><div class="final-heart">🧸💗🧸</div><div class="kicker">the most important part</div><h1 style="font-size:clamp(2.8rem,8vw,5.5rem)">I love you,<br>Khushi! ❤️</h1>
+ <p>You are my favorite person, my sweetest thought, and a reason for so many smiles. I hope your birthday feels as lovely as you make my world feel.</p>
+ <button class="btn" id="confettiBtn">Send you a million hearts 💕</button><div class="small">made with love, just for you</div>
+</div></section>
+</main><footer>crafted with love for Khushi · ♡</footer><div class="toast" id="toast"></div>
+<script>
+let current=0;const screens=[...document.querySelectorAll('.screen')],back=document.getElementById('backBtn');
+function go(n){screens[current].classList.remove('active');current=n;screens[current].classList.add('active');back.style.display=n>0?'block':'none';window.scrollTo({top:0,behavior:'smooth'});if(n===5)burst()}
+back.addEventListener('click',()=>{if(current>0)go(current-1)});
+const no=document.getElementById('noBtn'),yes=document.getElementById('yesBtn');
+function dodge(){const dx=(Math.random()>.5?1:-1)*(80+Math.random()*120),dy=(Math.random()>.5?1:-1)*(30+Math.random()*55);no.style.transform=`translate(${dx}px,${dy}px) rotate(${Math.random()*20-10}deg)`;toast('Hehe, that button says YES is the only answer 😜')}
+no.addEventListener('pointerenter',dodge);no.addEventListener('focus',dodge);no.addEventListener('click',dodge);
+yes.addEventListener('click',()=>{toast('Yayyy! I knew you were excited! 💗');go(1)});
+
+let poppedBalloons = 0;
+document.querySelectorAll('.balloon').forEach((balloon) => {
+  balloon.addEventListener('click', () => {
+    if (balloon.dataset.popped === 'true') return;
+    balloon.dataset.popped = 'true';
+    const wish = balloon.dataset.wish;
+    const slot = balloon.parentElement;
+    const reveal = document.createElement('div');
+    reveal.className = 'wish-reveal';
+    reveal.textContent = wish;
+    reveal.setAttribute('aria-live', 'polite');
+    balloon.remove();
+    slot.appendChild(reveal);
+    poppedBalloons++;
+    const status = document.getElementById('balloonComplete');
+    if (poppedBalloons === 4) {
+      status.textContent = 'All four wishes are yours, Khushi. Every single one comes from my heart. 💗';
+      document.getElementById('balloonContinue').style.display = 'inline-block';
+      burst();
+    } else {
+      status.textContent = `${poppedBalloons} of 4 wishes revealed — pop the rest, birthday girl 💕`;
+    }
+  });
+});
+
+const toastEl=document.getElementById('toast');let tt;function toast(t){toastEl.textContent=t;toastEl.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toastEl.classList.remove('show'),2500)}
+document.getElementById('cakeBtn').addEventListener('click',()=>{document.getElementById('cake').textContent='🍰';document.getElementById('cakeText').textContent='Wish made! May it come true, birthday girl. ✨';toast('Your wish is safe with the universe 🤫💗')});
+document.getElementById('env').addEventListener('click',()=>{document.getElementById('letter').classList.toggle('open');document.getElementById('env').textContent='💝';toast('A little piece of my heart, just for you 💌')});
+const canvas=document.createElement('canvas');canvas.style.cssText='position:fixed;inset:0;pointer-events:none;z-index:9';document.body.appendChild(canvas);const ctx=canvas.getContext('2d');let bits=[];
+function resize(){canvas.width=innerWidth;canvas.height=innerHeight}addEventListener('resize',resize);resize();
+function burst(){for(let i=0;i<95;i++)bits.push({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*8,vy:-Math.random()*7-2,life:80+Math.random()*40,s:3+Math.random()*5,c:['#f58da4','#e96f78','#f7d3a1','#b6dfcb'][i%4]});draw()}
+function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);bits=bits.filter(b=>b.life-->0&&b.y<innerHeight+10);bits.forEach(b=>{b.x+=b.vx;b.y+=b.vy;b.vy+=.13;ctx.fillStyle=b.c;ctx.fillRect(b.x,b.y,b.s,b.s*1.5)});if(bits.length)requestAnimationFrame(draw)}
+document.getElementById('confettiBtn').addEventListener('click',()=>{burst();toast('Sending Khushi all the love in the universe! 💖')});
+function heart(){const e=document.createElement('span');e.textContent=['♡','♥','✦'][Math.floor(Math.random()*3)];e.style.cssText=`position:absolute;left:${Math.random()*100}%;top:${80+Math.random()*20}%;font-size:${12+Math.random()*17}px;color:#e9a0a7;opacity:.55;animation:float ${5+Math.random()*4}s linear forwards`;document.getElementById('hearts').appendChild(e);setTimeout(()=>e.remove(),9000)}setInterval(heart,1100);
+</script></body></html>
